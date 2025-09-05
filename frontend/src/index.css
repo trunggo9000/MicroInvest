@@ -1,0 +1,141 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* Financial App Color Palette */
+    --background: 210 20% 98%;
+    --foreground: 215 25% 15%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 215 25% 15%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 215 25% 15%;
+
+    /* Finance Primary - Professional Blue */
+    --primary: 213 82% 51%;
+    --primary-foreground: 210 40% 98%;
+    --primary-hover: 213 82% 45%;
+
+    /* Success Green for gains */
+    --success: 142 76% 36%;
+    --success-foreground: 210 40% 98%;
+    --success-light: 142 76% 90%;
+
+    /* Warning for risks */
+    --warning: 38 92% 50%;
+    --warning-foreground: 210 40% 98%;
+    --warning-light: 38 92% 90%;
+
+    /* Error Red for losses */
+    --error: 0 84% 60%;
+    --error-foreground: 210 40% 98%;
+    --error-light: 0 84% 90%;
+
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 215 25% 15%;
+
+    --muted: 215 16% 96%;
+    --muted-foreground: 215 16% 46%;
+
+    --accent: 213 82% 95%;
+    --accent-foreground: 213 82% 25%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 215 16% 92%;
+    --input: 215 16% 96%;
+    --ring: 213 82% 51%;
+
+    --radius: 0.5rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Dark mode with professional finance theme */
+    --background: 215 25% 8%;
+    --foreground: 210 40% 98%;
+
+    --card: 215 25% 10%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 215 25% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Finance Primary - Bright Blue for dark mode */
+    --primary: 213 82% 61%;
+    --primary-foreground: 215 25% 8%;
+    --primary-hover: 213 82% 55%;
+
+    /* Success Green for gains */
+    --success: 142 76% 46%;
+    --success-foreground: 215 25% 8%;
+    --success-light: 142 76% 15%;
+
+    /* Warning for risks */
+    --warning: 38 92% 60%;
+    --warning-foreground: 215 25% 8%;
+    --warning-light: 38 92% 15%;
+
+    /* Error Red for losses */
+    --error: 0 84% 70%;
+    --error-foreground: 215 25% 8%;
+    --error-light: 0 84% 15%;
+
+    --secondary: 215 25% 16%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 215 25% 16%;
+    --muted-foreground: 215 16% 65%;
+
+    --accent: 215 25% 16%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 215 25% 18%;
+    --input: 215 25% 18%;
+    --ring: 213 82% 61%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}

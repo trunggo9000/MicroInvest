@@ -1,0 +1,18 @@
+# Emphasize Python in GitHub Linguist stats
+*.py linguist-detectable=true
+*.py linguist-language=Python
+
+# Downweight SQL migrations by marking them vendored (removes from language stats)
+supabase/**/*.sql linguist-vendored
+*.sql linguist-vendored
+
+# De-emphasize frontend assets by marking them as vendored
+src/** linguist-vendored
+public/** linguist-vendored
+*.ts linguist-vendored
+*.tsx linguist-vendored
+*.js linguist-vendored
+*.jsx linguist-vendored
+*.css linguist-vendored
+*.html linguist-vendored
+vite.config.ts linguist-vendored
