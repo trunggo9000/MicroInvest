@@ -5,187 +5,190 @@
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.x-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
 MicroInvest is a smart investment platform designed to help students and beginners make informed investment decisions. The platform provides personalized portfolio recommendations, risk assessment, and investment goal tracking using advanced algorithms and rule-based intelligence.
 
-## ✨ Features
-
-- **Smart Recommendations**: Get personalized investment portfolio suggestions based on your risk tolerance and financial goals.
-- **Risk Assessment**: Complete a detailed questionnaire to determine your risk profile.
-- **Portfolio Analysis**: Visualize your portfolio allocation and performance metrics.
-- **Goal Tracking**: Set and track your investment goals with progress visualization.
-- **Monte Carlo Simulations**: Project potential portfolio growth with sophisticated simulation models.
-- **Educational Resources**: Learn about investing with AI-generated explanations and tips.
-
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Python 3.10+
-- pip (Python package manager)
-
-### Installation
-
-1. **Clone the repository**
-   ```bash
-   git clone https://github.com/trunggo9000/MicroInvest.git
-   cd MicroInvest
-   ```
-
-2. **Set up a virtual environment (recommended)**
-   ```bash
-   # On Windows
-   python -m venv venv
-   .\venv\Scripts\activate
-   
-   # On macOS/Linux
-   python3 -m venv venv
-   source venv/bin/activate
-   ```
-
-3. **Install dependencies**
-   ```bash
-   pip install -r requirements.txt
-   ```
-
-4. **Set up environment variables** (optional)
-   - The application works without external API keys
-   - Database configuration is handled automatically
-
-### Running the Application
-
-1. **Start the Streamlit app**
-   ```bash
-   streamlit run frontend/app.py
-   ```
-
-2. **Access the application**
-   - Open your browser and navigate to `http://localhost:8501`
-
-## 🏗️ Project Structure
-
+## Project Structure
 ```
 MicroInvest/
-├── backend/                  # Backend services and logic
-│   ├── ai/                  # AI and machine learning components
-│   │   └── advisor.py       # AI advisor with GPT integration
-│   │
-│   ├── database/            # Database models and connections
-│   │   └── models.py        # SQLAlchemy models
-│   │
-│   └── services/            # Business logic services
-│       └── investment_engine.py  # Portfolio optimization and simulations
-│
-├── frontend/                # Streamlit frontend application
-│   ├── components/          # Reusable UI components
-│   │   ├── header.py        # Application header
-│   │   └── sidebar.py       # Navigation sidebar
-│   │
-│   └── pages/               # Application pages
-│       ├── __init__.py      # Page exports
-│       ├── welcome.py       # Landing page
-│       ├── questionnaire.py # Risk assessment questionnaire
-│       ├── portfolio.py     # Portfolio dashboard
-│       ├── analysis.py      # Portfolio analysis
-│       └── goals.py         # Investment goals tracking
-│
-├── .env                     # Environment variables
-├── requirements.txt         # Python dependencies
-└── README.md                # This file
+├── src/
+│   ├── streamlit_app/     # Streamlit web application
+│   ├── backend/           # Python backend services
+│   ├── frontend/          # React frontend (optional)
+│   └── shared/            # Shared utilities
+├── config/                # Configuration files
+│   ├── docker-compose.yml
+│   ├── Dockerfile
+│   └── pytest.ini
+└── tests/                 # Test suites
 ```
 
-## 🧠 Smart Advisory System
+## Local Development
 
-The application uses rule-based intelligence to provide:
-- Personalized investment explanations
-- Natural language Q&A about investments
-- Scenario analysis and what-if simulations
-- Educational content and recommendations
+### Streamlit App
+**Requirements:**
+- Python 3.9+
+- pip
 
-No external API keys required - everything runs locally.
-
-## 📊 Database
-
-The application uses SQLite by default (for development) but can be configured to use PostgreSQL or other databases supported by SQLAlchemy.
-
-To initialize the database:
+**Setup:**
 ```bash
-python -c "from backend.database.models import init_db; init_db()"
+# Install dependencies
+pip install -r requirements.txt
+
+# Start Streamlit app
+cd src/streamlit_app
+streamlit run app.py
+
+# Open in browser
+# http://localhost:8501
 ```
 
-## 🧪 Testing
+### Backend Services
+**Requirements:**
+- Python 3.9+
+- PostgreSQL (optional)
+- Redis (optional)
 
-Run tests using pytest:
+**Setup:**
 ```bash
-pytest tests/
+# Install Python dependencies
+pip install -r requirements.txt
+
+# Start backend services
+cd src/backend
+python -m uvicorn main:app --reload
 ```
 
-## 📝 License
+### Docker Development
+```bash
+# Start development environment
+docker-compose up -d
 
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+# View logs
+docker-compose logs -f
 
-## 🙏 Acknowledgments
-
-- Built with [Streamlit](https://streamlit.io/)
-- Powered by [OpenAI](https://openai.com/)
-- Data visualization with [Plotly](https://plotly.com/python/)
-
-Setup:
-```sh
-# 1) Create a virtual environment (recommended)
-python -m venv .venv
-# Windows
-.\.venv\Scripts\activate
-# macOS/Linux
-# source .venv/bin/activate
-
-# 2) Install Python dependencies
-pip install -r backend/requirements.txt
-
-# 3) Run Streamlit backend
-npm run backend
-# OR directly: cd backend && streamlit run streamlit_app.py
+# Stop services
+docker-compose down
 ```
 
-The Streamlit app includes:
-- DCA Simulator (upload CSV with `date,price` or generate synthetic series)
-- Simple ML demo (linear regression on synthetic data)
+## Production Build
+```bash
+# Build frontend
+cd src/frontend && npm run build
 
-## Build for Production (React app)
-```sh
-# Create an optimized build in dist/
-npm run build
-
-# (optional) Preview the production build locally
-npm run preview
+# Start production stack
+docker-compose -f docker-compose.prod.yml up -d
 ```
 
-## Project Stack
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
-- Python / Streamlit / Pandas / scikit-learn
-
-## Testing (if applicable)
-If you add tests, document how to run them here, e.g.:
-```sh
-npm test
-```
-
-## Deploying (React app)
-This project builds to a static bundle in `dist/`. You can deploy it to any static hosting provider or container platform. Typical options:
-- GitHub Pages
-- Netlify
-- Vercel
-- AWS S3 + CloudFront
-
-General steps:
-1) Run `npm run build`
-2) Upload the contents of `dist/` to your hosting provider
+## Tech Stack
+- **Frontend:** Streamlit, React, TypeScript, Tailwind CSS
+- **Backend:** Python (FastAPI), SQLAlchemy, PostgreSQL
+- **AI:** OpenAI GPT-4, scikit-learn, NumPy/Pandas
+- **Infra:** Docker, GitHub Actions
+- **Visualization:** Plotly, Chart.js
 
 ## Environment Variables
-If you introduce environment variables (e.g., API keys), create a `.env` file and reference variables via `import.meta.env` in Vite. Do not commit secrets.
+Create a `.env` file in the project root:
+```env
+# Database
+DATABASE_URL=postgresql://user:password@localhost:5432/microinvest
+REDIS_URL=redis://localhost:6379
+
+# API Keys
+OPENAI_API_KEY=your-openai-api-key
+ALPHA_VANTAGE_API_KEY=your-alpha-vantage-key
+
+# Security
+JWT_SECRET_KEY=your-jwt-secret
+```
+
+## Testing
+```bash
+# Run all tests
+pytest
+
+# Backend tests with coverage
+pytest --cov=src/backend --cov-report=html
+
+# Integration tests
+pytest tests/test_integration.py -v
+```
+
+## API Documentation
+
+### Authentication
+```bash
+# Register new user
+POST /api/auth/register
+{
+  "email": "investor@example.com",
+  "password": "securepassword",
+  "name": "John Investor"
+}
+
+# Login
+POST /api/auth/login
+{
+  "email": "investor@example.com",
+  "password": "securepassword"
+}
+```
+
+### Portfolio Management
+```bash
+# Create portfolio
+POST /api/portfolio/create
+Authorization: Bearer <jwt_token>
+{
+  "name": "Retirement Portfolio",
+  "riskTolerance": "moderate",
+  "timeHorizon": 20,
+  "monthlyContribution": 1000
+}
+
+# Get portfolio analysis
+GET /api/portfolio/{portfolio_id}/analysis
+Authorization: Bearer <jwt_token>
+```
+
+### AI Advisor
+```bash
+# Get investment advice
+POST /api/advisor/recommend
+Authorization: Bearer <jwt_token>
+{
+  "question": "Should I invest in tech stocks?",
+  "portfolioContext": { ... },
+  "riskProfile": "moderate"
+}
+```
+
+## Deployment
+
+### Docker Deployment
+```bash
+# Production build
+docker-compose -f docker-compose.prod.yml up -d
+
+# Scale services
+docker-compose up -d --scale backend=3
+```
+
+### Cloud Deployment
+```bash
+# Deploy to staging
+npm run deploy:staging
+
+# Deploy to production
+npm run deploy:production
+```
 
 ## Contributing
-- Create a new branch for your change
-- Commit with clear, descriptive messages
-- Open a pull request
+1. Fork the repository
+2. Create feature branch: `git checkout -b feature/amazing-feature`
+3. Commit changes: `git commit -m 'Add amazing feature'`
+4. Push to branch: `git push origin feature/amazing-feature`
+5. Open Pull Request
+
+### Development Guidelines
+- Follow PEP 8 for Python code
+- Maintain 90%+ test coverage
+- Use conventional commits
+- Update documentation for new features
