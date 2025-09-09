@@ -1,53 +1,131 @@
-# Micro Invest Wise
+# MicroInvest - AI-Powered Investment Platform
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
-[![Pandas](https://img.shields.io/badge/Pandas-1.x-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
-[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.x-F7931E?logo=scikitlearn&logoColor=white)](https://scikit-learn.org/)
+[![Pandas](https://img.shields.io/badge/Pandas-2.x-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.x-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
+MicroInvest is a smart investment platform designed to help students and beginners make informed investment decisions. The platform provides personalized portfolio recommendations, risk assessment, and investment goal tracking using advanced algorithms and rule-based intelligence.
 
-## Project Structure
+## ✨ Features
 
-This project is organized into separate frontend and backend components:
+- **Smart Recommendations**: Get personalized investment portfolio suggestions based on your risk tolerance and financial goals.
+- **Risk Assessment**: Complete a detailed questionnaire to determine your risk profile.
+- **Portfolio Analysis**: Visualize your portfolio allocation and performance metrics.
+- **Goal Tracking**: Set and track your investment goals with progress visualization.
+- **Monte Carlo Simulations**: Project potential portfolio growth with sophisticated simulation models.
+- **Educational Resources**: Learn about investing with AI-generated explanations and tips.
 
-```
-Micro/
-├── frontend/          # React + Vite frontend application
-│   ├── src/          # React source code
-│   ├── public/       # Static assets
-│   ├── package.json  # Frontend dependencies
-│   └── ...           # Frontend config files
-├── backend/          # Python Streamlit backend
-│   ├── streamlit_app.py
-│   └── requirements.txt
-├── shared/           # Shared resources
-│   ├── supabase/     # Database configuration
-│   └── .env          # Environment variables
-└── package.json      # Root workspace configuration
-```
+## 🚀 Getting Started
 
-## Local Development
+### Prerequisites
 
-### Frontend (React app)
-
-Requirements:
-- Node.js 18+ and npm 9+
-
-Setup:
-```sh
-# 1) Install dependencies (from root directory)
-npm install
-
-# 2) Start the dev server
-npm run dev
-
-# 3) Open the app
-# Visit the URL printed in the terminal (typically http://localhost:8080)
-```
-
-### Backend (Python Streamlit App)
-
-Requirements:
 - Python 3.10+
+- pip (Python package manager)
+
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/trunggo9000/MicroInvest.git
+   cd MicroInvest
+   ```
+
+2. **Set up a virtual environment (recommended)**
+   ```bash
+   # On Windows
+   python -m venv venv
+   .\venv\Scripts\activate
+   
+   # On macOS/Linux
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+
+3. **Install dependencies**
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. **Set up environment variables** (optional)
+   - The application works without external API keys
+   - Database configuration is handled automatically
+
+### Running the Application
+
+1. **Start the Streamlit app**
+   ```bash
+   streamlit run frontend/app.py
+   ```
+
+2. **Access the application**
+   - Open your browser and navigate to `http://localhost:8501`
+
+## 🏗️ Project Structure
+
+```
+MicroInvest/
+├── backend/                  # Backend services and logic
+│   ├── ai/                  # AI and machine learning components
+│   │   └── advisor.py       # AI advisor with GPT integration
+│   │
+│   ├── database/            # Database models and connections
+│   │   └── models.py        # SQLAlchemy models
+│   │
+│   └── services/            # Business logic services
+│       └── investment_engine.py  # Portfolio optimization and simulations
+│
+├── frontend/                # Streamlit frontend application
+│   ├── components/          # Reusable UI components
+│   │   ├── header.py        # Application header
+│   │   └── sidebar.py       # Navigation sidebar
+│   │
+│   └── pages/               # Application pages
+│       ├── __init__.py      # Page exports
+│       ├── welcome.py       # Landing page
+│       ├── questionnaire.py # Risk assessment questionnaire
+│       ├── portfolio.py     # Portfolio dashboard
+│       ├── analysis.py      # Portfolio analysis
+│       └── goals.py         # Investment goals tracking
+│
+├── .env                     # Environment variables
+├── requirements.txt         # Python dependencies
+└── README.md                # This file
+```
+
+## 🧠 Smart Advisory System
+
+The application uses rule-based intelligence to provide:
+- Personalized investment explanations
+- Natural language Q&A about investments
+- Scenario analysis and what-if simulations
+- Educational content and recommendations
+
+No external API keys required - everything runs locally.
+
+## 📊 Database
+
+The application uses SQLite by default (for development) but can be configured to use PostgreSQL or other databases supported by SQLAlchemy.
+
+To initialize the database:
+```bash
+python -c "from backend.database.models import init_db; init_db()"
+```
+
+## 🧪 Testing
+
+Run tests using pytest:
+```bash
+pytest tests/
+```
+
+## 📝 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+- Built with [Streamlit](https://streamlit.io/)
+- Powered by [OpenAI](https://openai.com/)
+- Data visualization with [Plotly](https://plotly.com/python/)
 
 Setup:
 ```sh
