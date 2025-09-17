@@ -45,12 +45,6 @@ streamlit run src/streamlit_app/app.py
 # http://localhost:8501
 ```
 
-**AI Features Available:**
-- 🔮 **AI Predictor**: TensorFlow neural networks + ensemble models
-- 📊 **Portfolio Optimizer**: ML-powered allocation with real-time training
-- 📈 **Market Predictor**: Technical analysis with correlation matrices
-- 🤖 **Real-time ML**: Live model training and prediction updates
-
 ### Backend Services
 **Requirements:**
 - Python 3.9+
