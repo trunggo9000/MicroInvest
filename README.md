@@ -6,7 +6,8 @@
 [![Pandas](https://img.shields.io/badge/Pandas-2.x-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.x-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
 
-MicroInvest is an AI-powered investment platform designed to help students and beginners make informed investment decisions. The platform provides personalized portfolio recommendations, risk assessment, and investment goal tracking using advanced machine learning models including TensorFlow neural networks, ensemble methods, and real-time technical analysis.
+**AI-powered** investment platform that helps students and beginners make informed decisions through personalized portfolio recommendations, risk assessment, and goal tracking using **advanced machine learning models.**
+https://github.com/user-attachments/assets/a852c334-35a3-4d74-b04a-8ec7bf45c11d
 
 ## Project Structure
 ```
