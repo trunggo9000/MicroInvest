@@ -7,6 +7,7 @@
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.x-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
 
 **AI-powered** investment platform that helps students and beginners make informed decisions through personalized portfolio recommendations, risk assessment, and goal tracking using **advanced machine learning models.**
+
 https://github.com/user-attachments/assets/a852c334-35a3-4d74-b04a-8ec7bf45c11d
 
 ## Project Structure
