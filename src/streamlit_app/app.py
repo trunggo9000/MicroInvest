@@ -683,30 +683,52 @@ def show_portfolio_optimizer():
                                   validation_split=0.2, verbose=0)
                 
                 # Predict for current user
-                user_features = np.array([[
-                    age, income, investment_amount, 
-                    risk_scores[risk_level], time_scores[time_horizon]
-                ]])
-                user_features_scaled = scaler.transform(user_features)
-                prediction = model.predict(user_features_scaled, verbose=0)[0]
-                
-                allocation = {
-                    'stocks': prediction[0],
-                    'bonds': prediction[1], 
-                    'alternatives': prediction[2],
-                    'confidence_score': 0.85
-                }
+                try:
+                    user_features = np.array([[
+                        age, income, investment_amount, 
+                        risk_scores[risk_level], time_scores[time_horizon]
+                    ]])
+                    user_features_scaled = scaler.transform(user_features)
+                    
+                    # Clear any existing name scopes before prediction
+                    import tensorflow as tf
+                    tf.keras.backend.clear_session()
+                    
+                    prediction = model.predict(user_features_scaled, verbose=0)[0]
+                    
+                    allocation = {
+                        'stocks': prediction[0],
+                        'bonds': prediction[1], 
+                        'alternatives': prediction[2],
+                        'confidence_score': 0.85
+                    }
+                except Exception as e:
+                    # Fallback allocation if TensorFlow prediction fails
+                    allocation = {
+                        'stocks': 0.6,
+                        'bonds': 0.3, 
+                        'alternatives': 0.1,
+                        'confidence_score': 0.7
+                    }
+                    st.warning(f"Using fallback allocation due to model error: {str(e)[:100]}...")
                 
                 # Also use scikit-learn for comparison
                 rf_model = RandomForestRegressor(n_estimators=100, random_state=42)
                 rf_model.fit(X_train, y_train)
                 rf_prediction = rf_model.predict(user_features_scaled)[0]
                 
-                returns = {
-                    'expected_annual_return': 0.06 + 0.08 * prediction[0],
-                    'volatility': 0.08 + 0.15 * prediction[0],
-                    'sharpe_ratio': (0.06 + 0.08 * prediction[0]) / (0.08 + 0.15 * prediction[0])
-                }
+                try:
+                    returns = {
+                        'expected_annual_return': 0.06 + 0.08 * allocation['stocks'],
+                        'volatility': 0.08 + 0.15 * allocation['stocks'],
+                        'sharpe_ratio': (0.06 + 0.08 * allocation['stocks']) / (0.08 + 0.15 * allocation['stocks'])
+                    }
+                except:
+                    returns = {
+                        'expected_annual_return': 0.08,
+                        'volatility': 0.12,
+                        'sharpe_ratio': 0.5
+                    }
                 
                 ML_AVAILABLE = True
                 
