@@ -1,4 +1,4 @@
-# MicroInvest - AI-Powered Investment Platform
+# MicroInvest
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
 [![TensorFlow](https://img.shields.io/badge/TensorFlow-2.20%2B-FF6F00?logo=tensorflow&logoColor=white)](https://tensorflow.org/)
