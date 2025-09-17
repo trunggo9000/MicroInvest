@@ -1,9 +1,12 @@
 # MicroInvest - AI-Powered Investment Platform
 
 [![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![TensorFlow](https://img.shields.io/badge/TensorFlow-2.20%2B-FF6F00?logo=tensorflow&logoColor=white)](https://tensorflow.org/)
+[![scikit-learn](https://img.shields.io/badge/scikit--learn-1.3%2B-F7931E?logo=scikit-learn&logoColor=white)](https://scikit-learn.org/)
 [![Pandas](https://img.shields.io/badge/Pandas-2.x-150458?logo=pandas&logoColor=white)](https://pandas.pydata.org/)
 [![Streamlit](https://img.shields.io/badge/Streamlit-1.x-FF4B4B?logo=streamlit&logoColor=white)](https://streamlit.io/)
-MicroInvest is a smart investment platform designed to help students and beginners make informed investment decisions. The platform provides personalized portfolio recommendations, risk assessment, and investment goal tracking using advanced algorithms and rule-based intelligence.
+
+MicroInvest is an AI-powered investment platform designed to help students and beginners make informed investment decisions. The platform provides personalized portfolio recommendations, risk assessment, and investment goal tracking using advanced machine learning models including TensorFlow neural networks, ensemble methods, and real-time technical analysis.
 
 ## Project Structure
 ```
@@ -22,23 +25,31 @@ MicroInvest/
 
 ## Local Development
 
-### Streamlit App
+### Streamlit App (Enhanced AI Features)
 **Requirements:**
-- Python 3.9+
+- Python 3.10+
 - pip
+- TensorFlow 2.20+
+- scikit-learn
 
 **Setup:**
 ```bash
-# Install dependencies
+# Install all ML dependencies for maximum functionality
 pip install -r requirements.txt
+pip install tensorflow scikit-learn xgboost lightgbm matplotlib seaborn
 
-# Start Streamlit app
-cd src/streamlit_app
-streamlit run app.py
+# Start enhanced Streamlit app
+streamlit run src/streamlit_app/app.py
 
-# Open in browser
+# Open in browser - Full AI features enabled
 # http://localhost:8501
 ```
+
+**AI Features Available:**
+- 🔮 **AI Predictor**: TensorFlow neural networks + ensemble models
+- 📊 **Portfolio Optimizer**: ML-powered allocation with real-time training
+- 📈 **Market Predictor**: Technical analysis with correlation matrices
+- 🤖 **Real-time ML**: Live model training and prediction updates
 
 ### Backend Services
 **Requirements:**
@@ -80,9 +91,12 @@ docker-compose -f docker-compose.prod.yml up -d
 ## Tech Stack
 - **Frontend:** Streamlit, React, TypeScript, Tailwind CSS
 - **Backend:** Python (FastAPI), SQLAlchemy, PostgreSQL
-- **AI:** OpenAI GPT-4, scikit-learn, NumPy/Pandas
+- **AI/ML:** TensorFlow, scikit-learn, XGBoost, LightGBM, NumPy/Pandas
+- **Data Science:** Matplotlib, Seaborn, Plotly for advanced visualizations
+- **Machine Learning:** Neural Networks, Random Forest, Gradient Boosting
+- **Technical Analysis:** RSI, MACD, Moving Averages, Volatility Analysis
 - **Infra:** Docker, GitHub Actions
-- **Visualization:** Plotly, Chart.js
+- **Real-time Features:** Live ML model training, Auto-refresh predictions
 
 ## Environment Variables
 Create a `.env` file in the project root:
@@ -162,23 +176,51 @@ Authorization: Bearer <jwt_token>
 
 ## Deployment
 
+### Quick Deployment (Streamlit Only)
+```bash
+# Clone repository
+git clone https://github.com/trunggo9000/MicroInvest.git
+cd MicroInvest
+
+# Install ML dependencies
+pip install -r requirements.txt
+pip install tensorflow scikit-learn xgboost lightgbm matplotlib seaborn
+
+# Run with full AI features
+streamlit run src/streamlit_app/app.py
+```
+
 ### Docker Deployment
 ```bash
-# Production build
+# Production build with ML support
 docker-compose -f docker-compose.prod.yml up -d
 
 # Scale services
 docker-compose up -d --scale backend=3
 ```
 
-### Cloud Deployment
+### Cloud Deployment Options
+**Streamlit Cloud:**
+```bash
+# Deploy directly from GitHub
+# Connect repository: https://github.com/trunggo9000/MicroInvest
+# Main file: src/streamlit_app/app.py
+# Python version: 3.10+
+```
+
+**Heroku/Railway:**
 ```bash
 # Deploy to staging
 npm run deploy:staging
 
-# Deploy to production
+# Deploy to production  
 npm run deploy:production
 ```
+
+### Performance Notes
+- **ML Models**: TensorFlow training may take 30-60 seconds on first load
+- **Memory**: Recommend 2GB+ RAM for full ML functionality
+- **Dependencies**: All ML libraries auto-fallback if unavailable
 
 ## Contributing
 1. Fork the repository
